@@ -1,0 +1,497 @@
+openapi: 3.0.0
+info:
+  title: CRUD-Customer
+  version: 1.0.0
+  description: ''
+servers:
+  - url: http://localhost:8080
+paths:
+  /customers:
+    parameters: []
+    post:
+      summary: Create Customer
+      parameters: []
+      responses:
+        '201':
+          headers:
+            Vary:
+              schema:
+                type: string
+              example: Access-Control-Request-Headers
+            Location:
+              schema:
+                type: string
+              example: http://localhost:8080/customers/5
+            Content-Type:
+              schema:
+                type: string
+              example: application/hal+json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Tue, 22 Apr 2025 18:44:36 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Create Customer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  customerDate:
+                    nullable: true
+                  statusCode:
+                    type: string
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+                  vip:
+                    type: boolean
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      customer:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      sales:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                statusCode:
+                  type: string
+    get:
+      summary: Read Customer All
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Vary:
+              schema:
+                type: string
+              example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+              example: application/hal+json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Wed, 23 Apr 2025 03:41:58 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Read Customer All
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      customers:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            firstName:
+                              type: string
+                            lastName:
+                              type: string
+                            customerDate:
+                              nullable: true
+                            statusCode:
+                              type: string
+                            createdOn:
+                              type: string
+                              format: style
+                            modifiedOn:
+                              type: string
+                            vip:
+                              type: boolean
+                            _links:
+                              type: object
+                              properties:
+                                self:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      format: uri
+                                customer:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      format: uri
+                                sales:
+                                  type: object
+                                  properties:
+                                    href:
+                                      type: string
+                                      format: uri
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      profile:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                  page:
+                    type: object
+                    properties:
+                      size:
+                        type: integer
+                      totalElements:
+                        type: integer
+                      totalPages:
+                        type: integer
+                      number:
+                        type: integer
+  /customers/1:
+    parameters: []
+    get:
+      summary: Read Customer By Id
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Vary:
+              schema:
+                type: string
+              example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+              example: application/hal+json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Tue, 22 Apr 2025 18:29:25 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Read Customer By Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  customerDate:
+                    nullable: true
+                  statusCode:
+                    type: string
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+                  vip:
+                    type: boolean
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      customer:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      sales:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+    patch:
+      summary: Update Customer
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Vary:
+              schema:
+                type: string
+              example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+              example: application/hal+json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Wed, 23 Apr 2025 03:43:05 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Update Customer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  customerDate:
+                    nullable: true
+                  statusCode:
+                    type: string
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+                  vip:
+                    type: boolean
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      customer:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      sales:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                statusCode:
+                  type: string
+    delete:
+      summary: Delete Customer
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Vary:
+              schema:
+                type: string
+              example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+              example: application/hal+json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Wed, 23 Apr 2025 03:43:16 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Delete Customer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  customerDate:
+                    nullable: true
+                  statusCode:
+                    type: string
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+                  vip:
+                    type: boolean
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      customer:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      sales:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+  /customers/1/sales:
+    parameters: []
+    get:
+      summary: Read Customer Sales
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Wed, 23 Apr 2025 03:42:46 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Read Customer Sales
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    saleAmount:
+                      type: number
+                    saleDate:
+                      type: string
+                      format: style
+                    customer:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        firstName:
+                          type: string
+                        lastName:
+                          type: string
+                        customerDate:
+                          nullable: true
+                        statusCode:
+                          type: string
+                        createdOn:
+                          type: string
+                          format: style
+                        modifiedOn:
+                          type: string
+                        vip:
+                          type: boolean
