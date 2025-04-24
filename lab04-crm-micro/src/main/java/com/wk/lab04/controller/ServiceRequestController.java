@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wk.lab04.dto.CustomerDTO;
 import com.wk.lab04.dto.ServiceRequestStatusDTO;
 import com.wk.lab04.entity.ServiceRequest;
 import com.wk.lab04.entity.ServiceRequestStatus;
 import com.wk.lab04.repository.ServiceRequestRepository;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.wk.lab04.service.BackOfficeServiceClient;;
+import com.wk.lab04.service.BackOfficeServiceClient;
+import com.wk.lab04.service.CustomerServiceClient;;
 
 
 
@@ -32,15 +34,25 @@ public class ServiceRequestController {
 
 	private final ServiceRequestRepository srRepository;
     private final BackOfficeServiceClient backOffice;
+    private final CustomerServiceClient customer;
 	
-	public ServiceRequestController(ServiceRequestRepository srRepo, BackOfficeServiceClient backOffice) {
+	public ServiceRequestController(ServiceRequestRepository srRepo, 
+			BackOfficeServiceClient backOffice,
+			CustomerServiceClient customer) {
 		this.srRepository = srRepo;
         this.backOffice = backOffice;
+        this.customer = customer;
 	}
 
 	
 	@PostMapping
 	public ResponseEntity<ServiceRequest> createServiceRequest(@RequestBody ServiceRequest serviceRequest) {
+        // Verify Customer
+        String customerId = serviceRequest.getCustomerId();
+        Optional<CustomerDTO> custDTO = customer.verifyUser(customerId);
+        custDTO.orElseThrow(() -> new RuntimeException("Customer not found"));
+        
+		// Save Issue information
 		serviceRequest.setStatusCode(ServiceRequestStatus.IN_PROGRESS);
         serviceRequest.setRequestOn(LocalDateTime.now());
         
