@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,6 +49,32 @@ public class ServiceRequestController {
 		return new ResponseEntity<>(addedServiceRequest, HttpStatus.CREATED);
 		
 	}
+	
+	@PatchMapping("/{id}")
+	public ResponseEntity<ServiceRequest> updateServiceRequest(@PathVariable Long id, @RequestBody ServiceRequest updateSr) {
+		Optional<ServiceRequest> sr = srRepository.findById(id);
+        if (sr.isPresent()) {
+        	ServiceRequest srEntity = sr.get();
+        	srEntity.setStatusCode(updateSr.getStatusCode());
+        	srEntity.setSubject(updateSr.getSubject());
+        	srRepository.save(srEntity);
+            return new ResponseEntity<>(sr.get(),HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteServiceRequest(@PathVariable Long id) {
+        Optional<ServiceRequest> sr = srRepository.findById(id);
+        if (sr.isPresent()) {
+        	srRepository.delete(sr.get());
+            return new ResponseEntity<>(sr.get(),HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+	
 
     @GetMapping
     public List<ServiceRequest> getAll() {

@@ -1,0 +1,406 @@
+openapi: 3.0.0
+info:
+  title: Service Request
+  version: 1.0.0
+  description: ''
+servers:
+  - url: localhost
+paths:
+  /service-requests:
+    parameters: []
+    post:
+      summary: Create Service Request
+      parameters: []
+      responses:
+        '201':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Thu, 24 Apr 2025 16:41:24 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Create Service Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  subject:
+                    type: string
+                  requestOn:
+                    type: string
+                    format: style
+                  customerId:
+                    type: string
+                    format: utc-millisec
+                  customerName:
+                    type: string
+                  statusCode:
+                    type: string
+                  resolvedOn:
+                    nullable: true
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: integer
+                customerName:
+                  type: string
+                subject:
+                  type: string
+    get:
+      summary: Get ServiceRequest ALL
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Wed, 23 Apr 2025 20:50:20 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Get ServiceRequest ALL
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    subject:
+                      type: string
+                    requestOn:
+                      type: string
+                      format: style
+                    customerId:
+                      type: string
+                      format: utc-millisec
+                    customerName:
+                      type: string
+                    statusCode:
+                      type: string
+                    resolvedOn:
+                      nullable: true
+                    createdOn:
+                      type: string
+                      format: style
+                    modifiedOn:
+                      type: string
+  /service-requests/1:
+    parameters: []
+    get:
+      summary: Get by Id
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Thu, 24 Apr 2025 16:42:36 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Get by Id
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  subject:
+                    type: string
+                  requestOn:
+                    type: string
+                    format: style
+                  customerId:
+                    type: string
+                    format: utc-millisec
+                  customerName:
+                    type: string
+                  statusCode:
+                    nullable: true
+                  resolvedOn:
+                    nullable: true
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+    patch:
+      summary: Update Service Request
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Thu, 24 Apr 2025 18:21:48 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Update Service Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  subject:
+                    type: string
+                  requestOn:
+                    type: string
+                    format: style
+                  customerId:
+                    type: string
+                    format: utc-millisec
+                  customerName:
+                    type: string
+                  statusCode:
+                    nullable: true
+                  resolvedOn:
+                    nullable: true
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+    delete:
+      summary: Delete Service Request
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+              example: chunked
+            Date:
+              schema:
+                type: string
+              example: Thu, 24 Apr 2025 18:22:59 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Delete Service Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  subject:
+                    type: string
+                  requestOn:
+                    type: string
+                    format: style
+                  customerId:
+                    type: string
+                    format: utc-millisec
+                  customerName:
+                    type: string
+                  statusCode:
+                    nullable: true
+                  resolvedOn:
+                    nullable: true
+                  createdOn:
+                    type: string
+                    format: style
+                  modifiedOn:
+                    type: string
+  /service-requests/1/forward:
+    parameters: []
+    post:
+      summary: Forward to Back Office
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Length:
+              schema:
+                type: integer
+              example: '0'
+            Date:
+              schema:
+                type: string
+              example: Thu, 24 Apr 2025 18:22:47 GMT
+            Keep-Alive:
+              schema:
+                type: string
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+              example: keep-alive
+          description: Forward to Back Office
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: integer
+                customerName:
+                  type: string
+                subject:
+                  type: string
+  /service-requests/3/status:
+    parameters: []
+    patch:
+      summary: Update Status
+      parameters: []
+      responses:
+        '200':
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                minLength: 0
+                maxLength: 0
+              example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                minLength: 0
+                maxLength: 0
+              example: chunked
+            Date:
+              schema:
+                type: string
+                minLength: 0
+                maxLength: 0
+              example: Wed, 23 Apr 2025 20:51:29 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                minLength: 0
+                maxLength: 0
+              example: timeout=60
+            Connection:
+              schema:
+                type: string
+                minLength: 0
+                maxLength: 0
+              example: keep-alive
+          description: Update Status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  subject:
+                    type: string
+                  requestOn:
+                    type: string
+                  customerId:
+                    type: string
+                  customerName:
+                    type: string
+                  statusCode:
+                    type: string
+                  resolvedOn:
+                    type: string
+                  createdOn:
+                    type: string
+                  modifiedOn:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                statusCode:
+                  type: string
