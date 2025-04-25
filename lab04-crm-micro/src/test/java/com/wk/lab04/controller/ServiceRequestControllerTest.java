@@ -38,7 +38,7 @@ import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(OrderAnnotation.class)
-@WireMockTest(httpPort = 8082)
+//@WireMockTest(httpPort = 8082)
 class ServiceRequestControllerTest {
 
     @Autowired
@@ -80,7 +80,7 @@ class ServiceRequestControllerTest {
     
     @Test
     @Order(2)
-    void testForwardIssueToBackOffice(WireMockRuntimeInfo wmRuntimeInfo) throws Exception {
+    void testForwardIssueToBackOffice() throws Exception {
     	// Trigger to another microservice
     	mockMvc.perform(post("/service-requests/1/forward")
     			.contentType(MediaType.APPLICATION_JSON)
