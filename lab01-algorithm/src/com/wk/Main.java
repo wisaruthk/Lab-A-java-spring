@@ -41,10 +41,10 @@ public class Main {
 		// Find index of 900_000
 		int index = m.binarySearch(data,900_000);
 		
-		System.out.printf("Found Target at Index %d \n",index);
+		System.out.printf("Found Target at Index %d \n",index); // should print 900_000
 		
 		
-		// Test
+		// Another Test
 		int[] sortedArray = {1, 3, 5, 7, 9, 11, 13, 15};
 		System.out.println(m.binarySearch(sortedArray, 7)); // should print 3
 		System.out.println(m.binarySearch(sortedArray, 16)); // should print -1
